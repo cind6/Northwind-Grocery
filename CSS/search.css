@@ -1,2 +1,16 @@
 a.nav-link:hover {color: rgb(133, 145, 212) !important;} 
 a.active { color: rgb(57, 154, 154) !important;}
+
+body {
+    background: linear-gradient(rgb(238, 242, 245), rgb(241, 243, 235), rgb(204, 230, 185), rgb(234, 233, 162), rgb(248, 247, 246));
+  background-attachment: fixed;
+
+}
+body {
+
+    height:100%
+}
+
+html{
+    height:100%
+}
