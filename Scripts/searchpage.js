@@ -62,9 +62,13 @@ function onCategorySelectChange(){
     //Category Selected from dropdown
 
     const categoryId = categorySelect.value;
+
+     if (categoryId === "") {
+        HideProductListingTable(); // Hide the table
+    } else {
     ShowProductsInCategory(categoryId);
     ShowProductListingTable();
-}
+}}
 
 function ShowCategorySelectRow(){
     categorySelectRow.style.display = "block";
@@ -84,6 +88,8 @@ function HideProductListingTable(){
 
 // HELPER FUNCTION, populate the Categories Dropdown with all possible categories from the API
 function populateCategories(){
+
+    
      fetch("http://localhost:8081/api/categories")
     .then(response => response.json())
     .then(categories => {
@@ -102,11 +108,15 @@ function populateCategories(){
 
 // HELPER FUNCTION, takes the CategoryId, and returns 
 function ShowProductsInCategory(categoryId){
+
+
+    
     fetch(`http://localhost:8081/api/categories/${categoryId}`)
     .then(response => response.json())
     .then(data => {
         populateProducts(data);
     });
+    
 
 }
 
@@ -126,6 +136,7 @@ function ShowAllProducts() {
 function populateProducts(productsArray){
 
     productListingTableBody.innerHTML = "";
+    
 
     for (let product of productsArray) {
         let newRow = productListingTableBody.insertRow(-1);
@@ -135,11 +146,13 @@ function populateProducts(productsArray){
         let cell1 = newRow.insertCell(1);
         let anchor = document.createElement("a");
         anchor.href = `details.html?productid=${product.productId}`;
-         anchor.text = "See details" //product.productName;
+         anchor.text = product.productName;
          cell1.appendChild(anchor);
 
         let cell2 = newRow.insertCell(2);
         cell2.innerHTML = product.unitPrice;
+
+/*-----------------------------------------------------*/
 
         // let cell3 = newRow.insertCell(3);
         // cell3.innerHTML = product.unitsInStock
