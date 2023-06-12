@@ -29,11 +29,18 @@ function urlParamsFunction() {
                 console.log(product);
                 showDetailforProduct(product);
 
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                redirectToHome();
             });
+    } else {
+        redirectToHome();
     }
-    else {
-        document.getElementById("error").innerHTML = "Oh no! there's no querystring... you should get to this page through a hyperlink."
-    }
+}
+
+function redirectToHome() {
+    window.location.href = "index.html";
 
 }
 

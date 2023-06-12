@@ -132,6 +132,7 @@ function ShowAllProducts() {
         })
 }
 
+
 //Display the products sent to it in the parameter.  It can be used both by ShowProductsInCategory, and ShowAllProducts.
 function populateProducts(productsArray){
 
@@ -144,13 +145,22 @@ function populateProducts(productsArray){
         idCell.innerHTML = product.productId;
 
         let cell1 = newRow.insertCell(1);
-        let anchor = document.createElement("a");
-        anchor.href = `details.html?productid=${product.productId}`;
-         anchor.text = product.productName;
-         cell1.appendChild(anchor);
+        cell1.innerHTML = product.productName;
+        // // let anchor = document.createElement("a");
+        // // anchor.href = `details.html?productid=${product.productId}`;
+        //  anchor.text = product.productName;
+        //  cell1.appendChild(anchor);
 
         let cell2 = newRow.insertCell(2);
         cell2.innerHTML = product.unitPrice;
+
+        let cell3 = newRow.insertCell(3);
+        let anchor = document.createElement("a");
+        anchor.href = `details.html?productid=${product.productId}`;
+         anchor.text = "More Info";
+         cell3.appendChild(anchor);
+
+        
 
 /*-----------------------------------------------------*/
 
